@@ -23,9 +23,9 @@ public class Day1 extends Day {
 
         elfCaloriesSeperated = seperateCaloriesPerElf(elfCalories);
 
-        sums = elfCaloriesSeperated.stream().map((value) -> {
-            return value.stream().mapToInt(Number::intValue).sum();
-        }).collect(toList());
+        sums = elfCaloriesSeperated.stream().map((value) ->
+                value.stream().mapToInt(Number::intValue).sum()).collect(toList()
+        );
 
         sums.sort(Comparator.comparing(Number::intValue));
 
