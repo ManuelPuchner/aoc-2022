@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) {
         days.add(new Day1());
         days.add(new Day2());
+        days.add(new Day3());
 
 
         if(args.length == 1) {
