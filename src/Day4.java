@@ -43,8 +43,10 @@ public class Day4 extends Day {
             String[] split = line.split(",");
             String[] first = split[0].split("-");
             String[] second = split[1].split("-");
-            return new Pair(new Range(Integer.parseInt(first[0]), Integer.parseInt(first[1])),
-                    new Range(Integer.parseInt(second[0]), Integer.parseInt(second[1])));
+            return new Pair(
+                    new Range(Integer.parseInt(first[0]), Integer.parseInt(first[1])),
+                    new Range(Integer.parseInt(second[0]), Integer.parseInt(second[1]))
+            );
         }).toList();
 
         int count = 0;
