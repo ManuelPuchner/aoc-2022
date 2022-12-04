@@ -16,12 +16,11 @@ public class Day1 extends Day {
         elfCalories = input.stream().map((value) -> {
             if (value.length() > 0) {
                 return Integer.parseInt(value);
-            } else {
-                return null;
             }
+            return null;
         }).collect(toList());
 
-        elfCaloriesSeperated = seperateCaloriesPerElf(elfCalories);
+        elfCaloriesSeperated = separateCaloriesPerElf(elfCalories);
 
         sums = elfCaloriesSeperated.stream().map((value) ->
                 value.stream().mapToInt(Number::intValue).sum()).collect(toList()
@@ -35,14 +34,13 @@ public class Day1 extends Day {
     @Override
     public Integer solvePart2() {
         int sum = 0;
-
         for(int i = sums.size(); i > sums.size() - 3; i--) {
             sum += sums.get(i - 1).intValue();
         }
         return sum;
     }
 
-    public List<List<Number>> seperateCaloriesPerElf(List<Number> input) {
+    public List<List<Number>> separateCaloriesPerElf(List<Number> input) {
         int size = input.size();
         int[] indexes =
                 IntStream.rangeClosed(-1, size)
