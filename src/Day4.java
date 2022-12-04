@@ -8,11 +8,6 @@ record Range(int min, int max) {
     public boolean overlaps(Range other) {
         return min <= other.max && max >= other.min;
     }
-
-    @Override
-    public String toString() {
-        return String.format("%d-%d", min, max);
-    }
 }
 
 record Pair(Range first, Range second) {
@@ -23,21 +18,13 @@ record Pair(Range first, Range second) {
     public Range getSecond() {
         return second;
     }
-
-    @Override
-    public String toString() {
-        return "Pair{" +
-                "first=" + first +
-                ", second=" + second +
-                '}';
-    }
 }
 
 public class Day4 extends Day {
     private List<Pair> pairs;
 
-    @Override
-    public Object solvePart1() {
+    public Day4() {
+        super();
         // input = FileUtils.readAllLines("input/4/example");
         pairs = input.stream().map(line -> {
             String[] split = line.split(",");
@@ -48,28 +35,27 @@ public class Day4 extends Day {
                     new Range(Integer.parseInt(second[0]), Integer.parseInt(second[1]))
             );
         }).toList();
+    }
 
+    @Override
+    public Object solvePart1() {
         int count = 0;
-
         for (Pair pair : pairs) {
             if(pair.getFirst().contains(pair.getSecond()) || pair.getSecond().contains(pair.getFirst())) {
                 count++;
             }
         }
-
         return count;
     }
 
     @Override
     public Object solvePart2() {
         int count = 0;
-
         for(Pair pair : pairs) {
             if(pair.getFirst().overlaps(pair.getSecond())) {
                 count++;
             }
         }
-
         return count;
     }
 }
