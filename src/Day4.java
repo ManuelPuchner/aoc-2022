@@ -1,26 +1,24 @@
 import java.util.List;
 
-record Range(int min, int max) {
-    public boolean contains(Range other) {
-        return min <= other.min && max >= other.max;
-    }
-
-    public boolean overlaps(Range other) {
-        return min <= other.max && max >= other.min;
-    }
-}
-
-record Pair(Range first, Range second) {
-    public Range getFirst() {
-        return first;
-    }
-
-    public Range getSecond() {
-        return second;
-    }
-}
-
 public class Day4 extends Day {
+    private record Range(int min, int max) {
+        public boolean contains(Range other) {
+            return min <= other.min && max >= other.max;
+        }
+
+        public boolean overlaps(Range other) {
+            return min <= other.max && max >= other.min;
+        }
+    }
+    private record Pair(Range first, Range second) {
+        public Range getFirst() {
+            return first;
+        }
+
+        public Range getSecond() {
+            return second;
+        }
+    }
     private List<Pair> pairs;
 
     public Day4() {
