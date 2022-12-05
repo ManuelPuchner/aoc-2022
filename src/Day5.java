@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Day5 extends Day {
     List<String> commands;
-    List<Stack<Character>> stacks = getStacks();
 
     public Day5() {
         super();
