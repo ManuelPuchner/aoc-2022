@@ -11,6 +11,7 @@ public class Main {
         days.add(new Day4());
         days.add(new Day5());
         days.add(new Day6());
+        days.add(new Day7());
 
 
         if(args.length == 1) {
