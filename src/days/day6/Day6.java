@@ -1,4 +1,6 @@
-import util.FileUtils;
+package days.day6;
+
+import days.Day;
 
 public class Day6 extends Day {
     @Override

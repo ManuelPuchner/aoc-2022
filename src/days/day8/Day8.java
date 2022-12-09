@@ -1,3 +1,7 @@
+package days.day8;
+
+import days.Day;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -5,7 +9,6 @@ public class Day8 extends Day {
     List<List<Tree>> trees;
 
     public Day8() {
-        super();
         trees = new ArrayList<>();
 
         for (int i = 0; i < input.size(); i++) {
@@ -23,7 +26,6 @@ public class Day8 extends Day {
         int x;
         int y;
         boolean isVisible = false;
-        int scenicScore = 0;
 
         public Tree(int height, int x, int y) {
             this.height = height;
@@ -32,21 +34,19 @@ public class Day8 extends Day {
         }
     }
 
-    private void visibilityCheck(List<Tree> row, int index) {
-        Tree tree = row.get(index);
-        List<Tree> before = row.subList(0, index);
-        List<Tree> after = row.subList(index + 1, row.size());
-        int biggestBefore = before.stream().mapToInt(t -> t.height).max().orElse(0);
-        int biggestAfter = after.stream().mapToInt(t -> t.height).max().orElse(0);
-        if (before.size() == 0 || after.size() == 0) {
-            tree.isVisible = true;
-            return;
+    @Override
+    public Object solvePart2() {
+        int biggestScore = 0;
+        for (List<Tree> row : trees) {
+            for (Tree tree : row) {
+                int scenicScore = getScenicScore(tree);
+                if (scenicScore > biggestScore) {
+                    biggestScore = scenicScore;
+                }
+            }
         }
-        if (tree.height > biggestBefore || tree.height > biggestAfter) {
-            tree.isVisible = true;
-        }
+        return biggestScore;
     }
-
 
     @Override
     public Object solvePart1() {
@@ -67,6 +67,21 @@ public class Day8 extends Day {
             }
         }
         return visibleTrees;
+    }
+
+    private void visibilityCheck(List<Tree> row, int index) {
+        Tree tree = row.get(index);
+        List<Tree> before = row.subList(0, index);
+        List<Tree> after = row.subList(index + 1, row.size());
+        int biggestBefore = before.stream().mapToInt(t -> t.height).max().orElse(0);
+        int biggestAfter = after.stream().mapToInt(t -> t.height).max().orElse(0);
+        if (before.size() == 0 || after.size() == 0) {
+            tree.isVisible = true;
+            return;
+        }
+        if (tree.height > biggestBefore || tree.height > biggestAfter) {
+            tree.isVisible = true;
+        }
     }
 
     private int getScenicScore(Tree tree) {
@@ -102,19 +117,5 @@ public class Day8 extends Day {
         }
 
         return score;
-    }
-
-    @Override
-    public Object solvePart2() {
-        int biggestScore = 0;
-        for (List<Tree> row : trees) {
-            for (Tree tree : row) {
-                tree.scenicScore = getScenicScore(tree);
-                if (tree.scenicScore > biggestScore) {
-                    biggestScore = tree.scenicScore;
-                }
-            }
-        }
-        return biggestScore;
     }
 }

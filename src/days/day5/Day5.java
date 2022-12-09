@@ -1,4 +1,6 @@
-import util.FileUtils;
+package days.day5;
+
+import days.Day;
 
 import java.util.*;
 

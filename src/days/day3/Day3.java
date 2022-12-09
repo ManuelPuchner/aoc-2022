@@ -1,3 +1,7 @@
+package days.day3;
+
+import days.Day;
+
 import java.util.ArrayList;
 import java.util.List;
 

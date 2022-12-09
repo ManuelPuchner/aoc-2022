@@ -1,3 +1,7 @@
+package days.day2;
+
+import days.Day;
+
 import java.util.HashMap;
 
 public class Day2 extends Day {

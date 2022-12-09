@@ -1,4 +1,6 @@
-import util.FileUtils;
+package days.day7;
+
+import days.Day;
 
 import java.util.ArrayList;
 import java.util.List;

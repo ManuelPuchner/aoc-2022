@@ -1,3 +1,7 @@
+package days.day4;
+
+import days.Day;
+
 import java.util.List;
 
 public class Day4 extends Day {

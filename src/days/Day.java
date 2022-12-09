@@ -1,10 +1,12 @@
+package days;
+
 import util.FileUtils;
 
 import java.util.List;
 
 public abstract class Day {
-    List<String> input;
-    int day;
+    protected List<String> input;
+    protected int day;
 
 
     abstract public Object solvePart1();
