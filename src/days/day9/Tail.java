@@ -2,7 +2,7 @@ package days.day9;
 
 public class Tail extends Node {
 
-    private Node nodeToFollow = null;
+    private Node nodeToFollow;
 
     public Tail(Node nodeToFollow) {
         this.nodeToFollow = nodeToFollow;
