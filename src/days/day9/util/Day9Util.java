@@ -6,7 +6,7 @@ import days.day9.Tail;
 import java.util.List;
 
 public class Day9Util {
-    public void printGrid(int width, int height, Head head, List<Tail> tails) {
+    public static void printGrid(int width, int height, Head head, List<Tail> tails) {
         for (int i = height; i >= 0; i--) {
             for (int j = 0; j < width; j++) {
                 if (head.getX() == j && head.getY() == i) {
@@ -14,8 +14,8 @@ public class Day9Util {
                 } else {
                     boolean isTail = false;
                     for (Tail tail : tails) {
-                        if (tail.getY() == j && tail.getY() == i) {
-                            System.out.print(" T ");
+                        if (tail.getX() == j && tail.getY() == i) {
+                            System.out.print(" " + tail.getTailNumber() + " ");
                             isTail = true;
                             break;
                         }
@@ -27,5 +27,7 @@ public class Day9Util {
             }
             System.out.println();
         }
+        System.out.println();
     }
+
 }
