@@ -9,18 +9,18 @@ public class Day9Util {
     public void printGrid(int width, int height, Head head, List<Tail> tails) {
         for (int i = height; i >= 0; i--) {
             for (int j = 0; j < width; j++) {
-                if(head.getX() == j && head.getY() == i) {
+                if (head.getX() == j && head.getY() == i) {
                     System.out.print(" H ");
                 } else {
                     boolean isTail = false;
                     for (Tail tail : tails) {
-                        if(tail.getY() == j && tail.getY() == i) {
+                        if (tail.getY() == j && tail.getY() == i) {
                             System.out.print(" T ");
                             isTail = true;
                             break;
                         }
                     }
-                    if(!isTail) {
+                    if (!isTail) {
                         System.out.print(" . ");
                     }
                 }

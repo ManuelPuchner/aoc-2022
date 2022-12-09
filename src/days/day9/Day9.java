@@ -5,15 +5,9 @@ import days.Day;
 import java.util.*;
 
 public class Day9 extends Day {
-
     public Day9() {
         //input = FileUtils.readAllLines("input/9/example");
     }
-
-    int width = 0;
-    int height = 0;
-
-
 
     @Override
     public Object solvePart1() {
@@ -27,7 +21,7 @@ public class Day9 extends Day {
         Head head = new Head();
         Tail tail = new Tail(head);
 
-        for(DirectionCommand direction : directions) {
+        for (DirectionCommand direction : directions) {
             for (int i = 0; i < direction.amount(); i++) {
                 head.move(direction.direction());
                 tail.follow(direction.direction());

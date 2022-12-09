@@ -9,42 +9,17 @@ public class Tail extends Node {
     }
 
     public boolean isDiagonal() {
-        boolean isDiagonal = false;
-
-        if(nodeToFollow.x - 1 == this.x && nodeToFollow.y - 1 == this.y) {
-            isDiagonal = true;
-        }
-        if(nodeToFollow.x + 1 == this.x && nodeToFollow.y - 1 == this.y) {
-            isDiagonal = true;
-        }
-        if(nodeToFollow.x - 1 == this.x && nodeToFollow.y + 1 == this.y) {
-            isDiagonal = true;
-        }
-        if(nodeToFollow.x + 1 == this.x && nodeToFollow.y + 1 == this.y) {
-            isDiagonal = true;
-        }
-
-        return isDiagonal;
+        return (nodeToFollow.x - 1 == this.x && nodeToFollow.y - 1 == this.y) ||
+                (nodeToFollow.x + 1 == this.x && nodeToFollow.y - 1 == this.y) ||
+                (nodeToFollow.x - 1 == this.x && nodeToFollow.y + 1 == this.y) ||
+                (nodeToFollow.x + 1 == this.x && nodeToFollow.y + 1 == this.y);
     }
 
     public boolean isDirectNeighbor() {
-        boolean isDirectNeighbor = false;
-
-        if(nodeToFollow.x == this.x && nodeToFollow.y - 1 == this.y) {
-            isDirectNeighbor = true;
-        }
-        if(nodeToFollow.x == this.x && nodeToFollow.y + 1 == this.y) {
-            isDirectNeighbor = true;
-        }
-        if(nodeToFollow.x - 1 == this.x && nodeToFollow.y == this.y) {
-            isDirectNeighbor = true;
-        }
-        if(nodeToFollow.x + 1 == this.x && nodeToFollow.y == this.y) {
-            isDirectNeighbor = true;
-        }
-
-
-        return isDirectNeighbor;
+        return (nodeToFollow.x == this.x && nodeToFollow.y - 1 == this.y) ||
+                (nodeToFollow.x == this.x && nodeToFollow.y + 1 == this.y) ||
+                (nodeToFollow.x - 1 == this.x && nodeToFollow.y == this.y) ||
+                (nodeToFollow.x + 1 == this.x && nodeToFollow.y == this.y);
 
     }
 
@@ -53,7 +28,7 @@ public class Tail extends Node {
     }
 
     public void follow(Direction direction) {
-        if(!(isDiagonal() || isDirectNeighbor() || isOverLapping())) {
+        if (!(isDiagonal() || isDirectNeighbor() || isOverLapping())) {
             this.x = nodeToFollow.lastX;
             this.y = nodeToFollow.lastY;
         }
