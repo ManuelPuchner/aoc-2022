@@ -1,3 +1,4 @@
+import days.day11.Day11;
 import days.day1.Day1;
 import days.day2.Day2;
 import days.day3.Day3;
@@ -27,6 +28,7 @@ public class Main {
         days.add(new Day8());
         days.add(new Day9());
         days.add(new Day10());
+        days.add(new Day11());
 
         if(args.length == 1) {
             int day = Integer.parseInt(args[0]);
