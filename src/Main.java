@@ -7,6 +7,7 @@ import days.day6.Day6;
 import days.day7.Day7;
 import days.day8.Day8;
 import days.day9.Day9;
+import days.day10.Day10;
 import days.*;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class Main {
         days.add(new Day7());
         days.add(new Day8());
         days.add(new Day9());
-
+        days.add(new Day10());
 
         if(args.length == 1) {
             int day = Integer.parseInt(args[0]);
