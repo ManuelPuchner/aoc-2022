@@ -17,11 +17,6 @@ public class Item implements Cloneable{
     }
 
     @Override
-    public String toString() {
-        return worryLevel.toString();
-    }
-
-    @Override
     public Item clone() {
         try {
             return (Item) super.clone();

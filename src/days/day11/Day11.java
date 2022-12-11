@@ -20,14 +20,19 @@ public class Day11 extends Day {
 
         separated.forEach(monkeyString -> monkeys.add(new Monkey(monkeyString)));
 
-
-
-        List<BigInteger> divisors = new ArrayList<>();
+        List<BigInteger> numbers = new ArrayList<>();
         for (Monkey m : monkeys) {
-            divisors.add(m.getDivisor());
+            numbers.add(m.getDivisor());
         }
 
-        BigInteger kgv = kgv(divisors);
+        BigInteger kgv = numbers.get(0);
+        for (int i = 1; i < numbers.size(); i++) {
+            BigInteger x = numbers.get(i);
+            kgv = kgv.gcd(x);
+        }
+        for (BigInteger x : numbers) {
+            kgv = kgv.multiply(x.divide(kgv.min(BigInteger.valueOf(1))));
+        }
 
         for (Monkey monkey : monkeys) {
             monkey.setMonkeyToThrowToIfFalse(monkeys.get(monkey.monkeyToThrowToIfFalseIndex));
@@ -55,18 +60,10 @@ public class Day11 extends Day {
                     monkey.numberOfInspections = monkey.numberOfInspections.add(BigInteger.ONE);
                 }
             }
-
-
-            for (Monkey m : monkeys) {
-                System.out.println(m);
-            }
-            System.out.println();
         }
-
         monkeys.sort((m1, m2) -> -1*m1.numberOfInspections.compareTo(m2.numberOfInspections));
         return monkeys.get(0).numberOfInspections.multiply(monkeys.get(1).numberOfInspections);
     }
-
 
     @Override
     public Object solvePart2() {
@@ -85,21 +82,7 @@ public class Day11 extends Day {
                 }
             }
         }
-
         monkeys.sort((m1, m2) -> -1*m1.numberOfInspections.compareTo(m2.numberOfInspections));
-
         return monkeys.get(0).numberOfInspections.multiply(monkeys.get(1).numberOfInspections);
-    }
-
-    private BigInteger kgv(List<BigInteger> numbers) {
-        BigInteger kgv = numbers.get(0);
-        for (int i = 1; i < numbers.size(); i++) {
-            BigInteger x = numbers.get(i);
-            kgv = kgv.gcd(x);
-        }
-        for (BigInteger x : numbers) {
-            kgv = kgv.multiply(x.divide(kgv.min(BigInteger.valueOf(1))));
-        }
-        return kgv;
     }
 }

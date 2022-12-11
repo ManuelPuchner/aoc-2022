@@ -9,8 +9,9 @@ import java.util.function.Predicate;
 public class Monkey {
     private static final BigInteger TEMP = new BigInteger("96".repeat(1000));
     private final static String ITEMS_PREFIX = "Starting items:";
-    public List<Item> items = new LinkedList<>();
 
+    public BigInteger numberOfInspections = new BigInteger("0");
+    public List<Item> items = new LinkedList<>();
     private String name;
 
     private Predicate<Item> test;
@@ -19,31 +20,11 @@ public class Monkey {
     private BigInteger divisor;
     private static BigInteger kgv;
 
-
-
-    public BigInteger numberOfInspections = new BigInteger("0");
-
     int monkeyToThrowToIfTrueIndex;
     int monkeyToThrowToIfFalseIndex;
 
     Monkey monkeyToThrowToIfTrue;
     Monkey monkeyToThrowToIfFalse;
-
-    public Monkey getMonkeyToThrowToIfTrue() {
-        return monkeyToThrowToIfTrue;
-    }
-
-    public void setMonkeyToThrowToIfTrue(Monkey monkeyToThrowToIfTrue) {
-        this.monkeyToThrowToIfTrue = monkeyToThrowToIfTrue;
-    }
-
-    public Monkey getMonkeyToThrowToIfFalse() {
-        return monkeyToThrowToIfFalse;
-    }
-
-    public void setMonkeyToThrowToIfFalse(Monkey monkeyToThrowToIfFalse) {
-        this.monkeyToThrowToIfFalse = monkeyToThrowToIfFalse;
-    }
 
     public static void setKgv(BigInteger kgv) {
         Monkey.kgv = kgv;
@@ -80,6 +61,14 @@ public class Monkey {
         monkeyToThrowToIfFalseIndex = Integer.parseInt(testParts.get(2).strip().split(" ")[5].strip());
     }
 
+    public void setMonkeyToThrowToIfTrue(Monkey monkeyToThrowToIfTrue) {
+        this.monkeyToThrowToIfTrue = monkeyToThrowToIfTrue;
+    }
+
+    public void setMonkeyToThrowToIfFalse(Monkey monkeyToThrowToIfFalse) {
+        this.monkeyToThrowToIfFalse = monkeyToThrowToIfFalse;
+    }
+
     public void removeItem(Item item) {
         items.remove(item);
     }
@@ -114,14 +103,5 @@ public class Monkey {
 
     public BigInteger getDivisor() {
         return divisor;
-    }
-
-    @Override
-    public String toString() {
-        return "Monkey{" +
-                "inspections=" + numberOfInspections +
-                ", items=" + items +
-                ", name='" + name + '\'' +
-                '}';
     }
 }
